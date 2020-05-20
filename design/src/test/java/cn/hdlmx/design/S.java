@@ -14,13 +14,16 @@ class A {
 		System.out.println("mehtod1 end");
 	}
 
-	public  void m2() {
+	public   void m2() {
 		
 		try {
-			for(;this.i<1000;) {
-				i=i+1;
-				System.out.println("当前线程："+Thread.currentThread().getName()+",i:" +i);
-				Thread.sleep(10);
+			for(;this.i<100;) {
+				synchronized (this) {
+					i=i+1;
+					System.out.println("当前线程："+Thread.currentThread().getName()+",i:" +i);
+					} 
+				
+				Thread.sleep(1000);
 			}
 				
 		} catch (InterruptedException e) {
